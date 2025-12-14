@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::resource('etudiants', EtudiantController::class); 
+Route::resource('enseignants', EnseignantController::class);

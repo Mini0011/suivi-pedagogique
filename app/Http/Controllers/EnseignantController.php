@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Etudiant;
-use App\Models\Enseignant;   // ✅ FIX 1
-use Inertia\Inertia;        // ✅ already correct
 
-class EtudiantController extends Controller
+class EnseignantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $etudiants = Etudiant::with('enseignant')->get();
+         $enseignants = Enseignant::with('etudiants')->get();
 
-        return Inertia::render('Etudiants', [
-            'etudiants' => $etudiants
+        return inertia('Enseignants', [
+            'enseignants' => $enseignants
         ]);
     }
 
@@ -26,11 +23,7 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-        $enseignants = Enseignant::all();
-
-        return Inertia::render('Etudiants/Create', [   // ✅ FIX 2
-            'enseignants' => $enseignants
-        ]);
+        //
     }
 
     /**
@@ -52,14 +45,9 @@ class EtudiantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Etudiant $etudiant)
+    public function edit(string $id)
     {
-        $enseignants = Enseignant::all();
-
-        return Inertia::render('Etudiants/Edit', [     // ✅ FIX 2
-            'etudiant' => $etudiant,
-            'enseignants' => $enseignants
-        ]);
+        //
     }
 
     /**
